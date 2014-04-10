@@ -2,17 +2,6 @@ var auth = require('../auth');
 var models = require('../models');
 
 exports.getHashtag = function(req, res) {
- 	//test to see if it works
- 	auth.ig.tags.info({
- 	name: 'sushi',
- 	complete: function(data) {
- 		console.log(data);
- 	}
- });
- 	res.render('hashtag');
- }
-
-exports.getHashtag = function(req, res) {
 	auth.ig.tags.recent({
 	name: req.body.hashtag,
 	complete: function(data) {
