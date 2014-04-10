@@ -5,5 +5,17 @@
 
 <body>
 <p>Hello World</p>
+
+	<div class="container">
+	<h1>Hashtags and pictures that people like</h1>
+		<div class="row">
+		{{#each images}}
+			<div class="col-xs-4" class="images" style="text-align:center">
+				<img src="{{image}}" class="img-responsive" class="img hashtag-img"><br>
+				<h4>#{{hashtag}}</h4>
+				</div>
+				{{/each}}
+				</div>
+
 </body>
 </html>
