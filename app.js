@@ -15,6 +15,7 @@ app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.bodyParser());
+
 //routes
 app.get('/', function (req, res) {
 			res.render('index');
@@ -24,6 +25,7 @@ app.get('/hashtag', function (req,res) {
 	res.render('hashtag');
 })
 app.post('/hashtag', hashtag.getHashtag); //add this with routes
+app.post ('/save', hashtag.saveFavorites);
 
 
 //set environment ports and start application
