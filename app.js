@@ -7,14 +7,13 @@ var app = express();
 //route for hashtag
 var hashtag = require('./routes/hashtag'); //add this in the top dependencies
 
-
-
 //configures the template engine
 app.engine ('handlebars', handlebars());
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.bodyParser());
 //routes
 app.get('/', function (req, res) {
 			res.render('index');
