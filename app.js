@@ -7,6 +7,18 @@ var app = express();
 var dotenv = require('dotenv');
 dotenv.load();
 
+//add instagram api setup
+var ig = require('instagram-node-lib')
+ig.set('client_id', process.env.instagram_client_id);
+ig.set('client_secret', process.env.instagram_client_secret);
+
+ig.tags.info({
+	name:'sushi',
+	complete: function(data) {
+		console.log(data);
+	}
+})
+
 //configures the template engine
 app.engine ('handlebars', handlebars());
 app.set('view engine', 'handlebars');
