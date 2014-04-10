@@ -4,21 +4,10 @@ var path = require('path');
 var handlebars = require('express3-handlebars');
 var app = express();
 
-//load environment variable
-var dotenv = require('dotenv');
-dotenv.load();
+//route for hashtag
+var hashtag = require('./routes/hashtag'); //add this in the top dependencies
 
-//add instagram api setup
-var ig = require('instagram-node-lib')
-ig.set('client_id', process.env.instagram_client_id);
-ig.set('client_secret', process.env.instagram_client_secret);
 
-ig.tags.info({
-	name:'sushi',
-	complete: function(data) {
-		console.log(data);
-	}
-})
 
 //configures the template engine
 app.engine ('handlebars', handlebars());
@@ -34,6 +23,8 @@ app.get('/', function (req, res) {
 app.get('/hashtag', function (req,res) {
 	res.render('hashtag');
 })
+app.post('/hashtag', hashtag.getHashtag); //add this with routes
+
 
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);
