@@ -1,5 +1,6 @@
 var express = require ('express');
 var http = require ('http');
+var path = require('path');
 var handlebars = require('express3-handlebars');
 var app = express();
 
@@ -23,11 +24,16 @@ ig.tags.info({
 app.engine ('handlebars', handlebars());
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
+app.use(express.static(path.join(__dirname, 'public')));
 
 //routes
 app.get('/', function (req, res) {
 			res.render('index');
 });
+
+app.get('/hashtag', function (req,res) {
+	res.render('hashtag');
+})
 
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);
