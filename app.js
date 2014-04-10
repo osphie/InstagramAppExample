@@ -25,6 +25,7 @@ app.get('/hashtag', function (req,res) {
 })
 app.post('/hashtag', hashtag.getHashtag); //add this with routes
 app.post ('/save', hashtag.saveFavorites);
+app.post ('/delete', index.deleteImage);
 
 
 //set environment ports and start application
